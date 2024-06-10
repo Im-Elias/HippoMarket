@@ -3,7 +3,7 @@ import { z } from "zod";
 export const AuthCredentialsValidator = z.object({
   email: z.string().email(),
   password: z.string().min(8, {
-    message: "La contraseña debe tener al menos 8 caracteres",
+    message: "Password must be at least 8 characters long.",
   }),
 });
 
