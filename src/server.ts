@@ -25,14 +25,6 @@ const start = async () => {
     },
   });
 
-  app.use(
-    "/api/trpc",
-    trpcExpress.createExpressMiddleware({
-      router: appRouter,
-      createContext,
-    })
-  );
-
   //Probando conneccion mongo
   // Configurar CORS
   app.use((req, res, next) => {
@@ -41,6 +33,14 @@ const start = async () => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next();
   });
+
+  app.use(
+    "/api/trpc",
+    trpcExpress.createExpressMiddleware({
+      router: appRouter,
+      createContext,
+    })
+  );
 
   app.use((req, res) => nextHandler(req, res));
 
