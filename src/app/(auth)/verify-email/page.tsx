@@ -1,7 +1,10 @@
+import VerifyEmail from "@/components/VerifyEmail";
 import Image from "next/image";
 
 interface PageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
 }
 
 const VerifyEmailPage = ({ searchParams }: PageProps) => {
@@ -10,18 +13,18 @@ const VerifyEmailPage = ({ searchParams }: PageProps) => {
 
   return (
     <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] ">
+      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         {token && typeof token === "string" ? (
-          <div className="grid gap-6 "></div>
+          <div className="grid gap-6">
+            <VerifyEmail token={token} />
+          </div>
         ) : (
           <div className="flex h-full flex-col items-center justify-center space-y-1">
             <div className="relative mb-4 h-60 w-60 text-muted-foreground">
               <Image
                 src="/hippo-email-sent.webp"
                 fill
-                sizes="auto"
-                priority={true}
-                alt="Imagen email enviado Hippo"
+                alt="hippo email sent image"
               />
             </div>
 
@@ -29,12 +32,12 @@ const VerifyEmailPage = ({ searchParams }: PageProps) => {
 
             {toEmail ? (
               <p className="text-muted-foreground text-center">
-                Hemos enviado un correo de verificación a{" "}
+                Hemos enviado un link de verificación a{" "}
                 <span className="font-semibold">{toEmail}</span>.
               </p>
             ) : (
               <p className="text-muted-foreground text-center">
-                Hemos enviado un link de verificación a tu correo.
+                Hemos enviado un link de verificación a tu dirección de email.
               </p>
             )}
           </div>
