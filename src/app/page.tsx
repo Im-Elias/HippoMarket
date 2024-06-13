@@ -25,6 +25,9 @@ const perks = [
    },
 ];
 
+// to fix hydration error (according to gemini)
+const buttonVariantsConst = buttonVariants();
+
 export default function Home() {
    return (
       <>
@@ -41,7 +44,7 @@ export default function Home() {
                   estándar de calidad.
                </p>
                <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <Link href="/products" className={buttonVariants()}>
+                  <Link href="/products" className={buttonVariantsConst}>
                      Explora Tendencias
                   </Link>
                   <Button variant="ghost">
